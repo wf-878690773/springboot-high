@@ -2,12 +2,13 @@ package com.zr.Service;
 
 import com.zr.entity.ProductRank;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface ProductRankService {
 
     // 若没有该数据记录则添加该数据以及score 若有则直接给score加count
-    public void zSetAdd(ProductRank productRank, double count);
+    public void zSetAdd(ProductRank productRank,double count);
 
 
     /**
@@ -17,5 +18,5 @@ public interface ProductRankService {
      * @return
      */
 
-    public List<ProductRank> getSetRank(Long begin, Long end);
+    public List<Object> getSetRank(Long begin, Long end) throws IOException;
 }

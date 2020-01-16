@@ -14,7 +14,6 @@ public class ProductRank implements Serializable {
 
     // 主键
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String productId;
 
     private String productName;
@@ -24,7 +23,8 @@ public class ProductRank implements Serializable {
     public ProductRank() {
     }
 
-    public ProductRank(String productName, String price) {
+    public ProductRank(String productId, String productName, String price) {
+        this.productId = productId;
         this.productName = productName;
         this.price = price;
     }

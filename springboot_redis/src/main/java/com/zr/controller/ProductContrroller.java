@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -20,32 +21,32 @@ public class ProductContrroller {
     @GetMapping("product")
 
 
-    @PostMapping("add")
-    public String addProduct(ProductRank productRank,Double count){
+    @PostMapping("/add")
+    public String addProduct(@RequestBody ProductRank productRank)  {
 
+        int count = 0;
         count++;
-
-        ProductRank rank2 = new ProductRank("aaa","111");
-
-     /*   ProductRank rank3 = new ProductRank("bbb","222");
-        ProductRank rank4 = new ProductRank("bbb","222");
-        ProductRank rank5 = new ProductRank("ccc","333");
-        ProductRank rank6 = new ProductRank("ccc","333");
-        ProductRank rank7 = new ProductRank("ccc","333");*/
-
         productRankService.zSetAdd(productRank,count);
 
         return "添加成功";
 
     }
 
+    @PostMapping("/add1")
+    public String addProduct1()  {
+
+        return "添加成功";
+
+    }
+
+
     @GetMapping("setRank")
-    public List<ProductRank> setRank(@RequestParam(value = "begin",defaultValue = "0") Long begin,
-                                     @RequestParam(value = "end",defaultValue = "-1") Long end){
+    public List<Object> setRank(@RequestParam(value = "begin",defaultValue = "0") Long begin,
+                                @RequestParam(value = "end",defaultValue = "-1") Long end) throws IOException {
 
         System.out.println(begin.byteValue()+end.byteValue());
 
-        List<ProductRank> rank = productRankService.getSetRank(begin, end);
+        List<Object> rank = productRankService.getSetRank(begin, end);
 
 
         return rank;
