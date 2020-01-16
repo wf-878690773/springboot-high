@@ -1,6 +1,6 @@
 package com.zr;
 
-import com.zr.Service.ProductRankService;
+import com.zr.service.ProductRankService;
 import com.zr.entity.ProductRank;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,11 +1,8 @@
 package com.zr.controller;
 
-import com.zr.Service.ProductRankService;
+import com.zr.service.ProductRankService;
 import com.zr.entity.ProductRank;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;

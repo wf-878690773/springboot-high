@@ -1,6 +1,6 @@
 package com.zr.controller;
 
-import com.zr.Service.IUserService;
+import com.zr.service.IUserService;
 import com.zr.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

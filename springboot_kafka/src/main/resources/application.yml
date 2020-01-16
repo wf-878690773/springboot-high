@@ -1,0 +1,7 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092  #消息生产者
+
+    consumer:
+      group-id: test-consumer       #消息消费者
+      auto-offset-reset: latest
