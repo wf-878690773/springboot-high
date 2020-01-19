@@ -6,7 +6,7 @@ import com.zr.entity.User;
 import java.util.List;
 
 
-public interface IUserService {
+public interface UserService {
 
     List<User> findAll() throws JsonProcessingException;
 

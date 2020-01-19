@@ -1,6 +1,6 @@
 package com.zr.controller;
 
-import com.zr.service.IUserService;
+import com.zr.service.UserService;
 import com.zr.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private IUserService service;
+    private UserService service;
 
     @GetMapping("/hello")
     @ResponseBody
