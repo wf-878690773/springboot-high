@@ -14,4 +14,8 @@ public interface UserLikeRepository  extends JpaRepository<UserLike, Long> {
     Page<UserLike> findByLikedUserIdAndStatus(String likedUserId, Integer code, Pageable pageable);
 
     Page<UserLike> findByLikedPostIdAndStatus(String likedPostId, Integer code, Pageable pageable);
+
+
+    UserLike findByLikedUserIdAndLikedPostId(String likedPostId, String likedPostId1);
+
 }

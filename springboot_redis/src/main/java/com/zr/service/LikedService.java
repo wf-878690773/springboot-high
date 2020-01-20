@@ -53,5 +53,5 @@ public interface LikedService {
     /**
      * 将Redis中的点赞数量数据存入数据库
      */
-    void transLikedCountFromRedis2DB();
+    void transLikedCountFromRedis2DB() ;
 }

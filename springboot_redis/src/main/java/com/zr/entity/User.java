@@ -22,6 +22,9 @@ public class User implements Serializable {
     private String password;
     // 姓名
     private String name;
+    //
+    private Integer likeNum;
+
 
 
 }

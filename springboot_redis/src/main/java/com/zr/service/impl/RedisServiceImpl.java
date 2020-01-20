@@ -58,6 +58,7 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public void incrementLikedCount(String likedUserId) {
+
         //该用户的点赞数加1
         redisTemplate.opsForHash().increment(RedisKeyUtils.MAP_KEY_USER_LIKED_COUNT,likedUserId,1);
 
@@ -76,8 +77,10 @@ public class RedisServiceImpl implements RedisService {
      */
     @Override
     public List<UserLike> getLikedDataFromRedis() {
+
         Cursor<Map.Entry<Object,Object>> scan = redisTemplate.opsForHash().scan(RedisKeyUtils.MAP_KEY_USER_LIKED, ScanOptions.NONE);
         List<UserLike> list = new ArrayList<>();
+
         while(scan.hasNext()){
             Map.Entry<Object, Object> entry = scan.next();
             String key = (String) entry.getKey();
@@ -91,7 +94,8 @@ public class RedisServiceImpl implements RedisService {
             UserLike userLike = new UserLike(likedUserId,likedPostrId,value);
             list.add(userLike);
 
-            redisTemplate.opsForHash().delete(RedisKeyUtils.MAP_KEY_USER_LIKED,key);
+
+          //  redisTemplate.opsForHash().delete(RedisKeyUtils.MAP_KEY_USER_LIKED,key);
 
         }
 
@@ -101,6 +105,26 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public List<LikedCountDTO> getLikedCountFromRedis() {
-        return null;
+
+        Cursor<Map.Entry<Object,Object>> cursor = redisTemplate.opsForHash().scan(RedisKeyUtils.MAP_KEY_USER_LIKED_COUNT, ScanOptions.NONE);
+
+       List<LikedCountDTO> list = new ArrayList<>();
+
+       while (cursor.hasNext()){
+
+           Map.Entry<Object, Object> map = cursor.next();
+            //将点赞数量存储在 LikedCountDT
+           String key = (String) map.getKey();
+           LikedCountDTO dto = new LikedCountDTO(key, (Integer) map.getValue());
+           list.add(dto);
+           //从Redis中删除这条记录
+         /*  redisTemplate.opsForHash().delete(RedisKeyUtils.MAP_KEY_USER_LIKED_COUNT,key);*/
+
+       }
+       return list;
+
     }
+
+
+
 }

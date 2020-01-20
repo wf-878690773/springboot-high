@@ -54,6 +54,21 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    @Override
+    public User findById(Long id) {
+
+        return repository.getOne(id);
+    }
+
+    @Override
+    public void updateInfo(User user) {
+
+         repository.saveAndFlush(user);
+    }
+
+
+
+
     public JavaType getCollectionType(Class<?> collectionClass, Class<?>... elementClasses) {
 
         return mapper.getTypeFactory().constructParametricType(collectionClass, elementClasses);

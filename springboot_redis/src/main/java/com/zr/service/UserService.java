@@ -10,4 +10,7 @@ public interface UserService {
 
     List<User> findAll() throws JsonProcessingException;
 
+    User findById(Long id);
+
+    void updateInfo(User user);
 }

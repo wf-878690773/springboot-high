@@ -49,16 +49,25 @@ public class RedisConfig {
 
         template.afterPropertiesSet();
 
-
         return template;
     }
 
+    /**
+     * 秒杀
+     * @param redisTemplate
+     * @return
+     */
     @Bean
     public ZSetOperations<String,Object> zSetOperations(RedisTemplate<String,Object> redisTemplate){
 
         return redisTemplate.opsForZSet();
     }
 
+    /**
+     *
+     * @param redisConnectionFactory
+     * @return
+     */
     @Bean
     public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory redisConnectionFactory){
 
